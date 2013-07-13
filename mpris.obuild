@@ -1,0 +1,16 @@
+name: mpris
+version: 0.1.0
+synopsis: Client library for the MPRIS D-Bus media player interface
+obuild-ver: 1
+
+library mpris
+  src-dir: lib
+  modules: mpris_client, mpris_interfaces, mpris_proxy
+  build-deps: lwt.syntax, obus
+  pp: camlp4o
+
+library mpris_clients
+  src-dir: clients
+  modules: mpris_banshee
+  build-deps: lwt.syntax, obus, mpris
+  pp: camlp4o
