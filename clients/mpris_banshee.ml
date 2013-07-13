@@ -6,3 +6,6 @@ module Org_mpris_MediaPlayer2 =
 
 module Org_mpris_MediaPlayer2_Player =
   Mpris_client.Org_mpris_MediaPlayer2_Player
+
+module Org_mpris_MediaPlayer2_Playlists =
+  Mpris_client.Org_mpris_MediaPlayer2_Playlists
