@@ -1,5 +1,5 @@
 let make_proxy () =
-  Mpris_client_common.make "org.mpris.MediaPlayer2.banshee"
+  Mpris_client_common.make_proxy "org.mpris.MediaPlayer2.banshee"
 
 module Org_mpris_MediaPlayer2 =
   Mpris_client_generic.Org_mpris_MediaPlayer2
