@@ -5,7 +5,7 @@ obuild-ver: 1
 
 library mpris
   src-dir: lib
-  modules: mpris_client, mpris_interfaces, mpris_proxy
+  modules: mpris_client_generic, mpris_interfaces, mpris_proxy
   build-deps: lwt.syntax, obus
   pp: camlp4o
 
