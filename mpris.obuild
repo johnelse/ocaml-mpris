@@ -5,12 +5,12 @@ obuild-ver: 1
 
 library mpris
   src-dir: lib
-  modules: mpris_client_generic, mpris_interfaces, mpris_proxy
+  modules: mpris_client_generic, mpris_interfaces
   build-deps: lwt.syntax, obus
   pp: camlp4o
 
 library mpris_clients
   src-dir: clients
-  modules: mpris_banshee
+  modules: mpris_client_common, mpris_banshee
   build-deps: lwt.syntax, obus, mpris
   pp: camlp4o
