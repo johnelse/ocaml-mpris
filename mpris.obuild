@@ -11,7 +11,7 @@ library mpris
 
 library mpris_clients
   src-dir: clients
-  modules: mpris_client_common, mpris_banshee, mpris_spotify
+  modules: mpris_client_common, mpris_banshee, mpris_mopidy, mpris_spotify
   build-deps: lwt.syntax, obus, mpris
   pp: camlp4o
 
