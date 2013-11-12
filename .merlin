@@ -1,0 +1,8 @@
+PKG lwt lwt.syntax obus
+S lib
+S clients
+S demo
+
+B dist/build/lib-mpris
+B dist/build/lib-mpris_clients
+B dist/build/demo_spotify
