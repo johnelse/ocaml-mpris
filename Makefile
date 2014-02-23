@@ -1,16 +1,29 @@
+all: build
+
 .PHONY: install uninstall clean
 
-dist/build/lib-mpris/mpris.cmxa:
-	obuild configure
-	obuild build
+NAME=mpris
+J=4
 
-install:
-	ocamlfind install mpris lib/META \
-		$(wildcard dist/build/lib-mpris/*) \
-		$(wildcard dist/build/lib-mpris_clients/*) \
+setup.ml: _oasis
+	oasis setup
+
+setup.data: setup.ml
+	ocaml setup.ml -configure
+
+build: setup.data setup.ml
+	ocaml setup.ml -build -j $(J)
+
+install: setup.data setup.ml
+	ocaml setup.ml -install
 
 uninstall:
-	ocamlfind remove mpris
+	ocamlfind remove $(NAME)
+
+reinstall: setup.ml
+	ocamlfind remove $(NAME) || true
+	ocaml setup.ml -reinstall
 
 clean:
-	rm -rf dist
+	ocamlbuild -clean
+	rm -f setup.data setup.log

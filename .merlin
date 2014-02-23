@@ -3,6 +3,6 @@ S lib
 S clients
 S demo
 
-B dist/build/lib-mpris
-B dist/build/lib-mpris_clients
-B dist/build/demo_spotify
+B _build/lib
+B _build/clients
+B _build/demo

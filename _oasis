@@ -1,0 +1,32 @@
+OASISFormat:     0.3
+Name:            mpris
+Version:         0.1.0
+Synopsis:        Client library for the MPRIS D-Bus media player interface
+License:         MIT
+Authors:         John Else
+Copyrights:      (C) 2013 John Else
+BuildTools:      ocamlbuild
+Plugins:         META (0.3)
+
+Library mpris
+  Path:          lib
+  BuildDepends:  lwt, obus
+  Findlibname:   mpris
+  ByteOpt:       -bin-annot
+  NativeOpt:     -bin-annot
+  Modules:       Mpris_client_generic, Mpris_interfaces
+
+Library mpris_clients
+  Path:          clients
+  BuildDepends:  lwt, obus, mpris
+  Findlibname:   clients
+  Findlibparent: mpris
+  ByteOpt:       -bin-annot
+  NativeOpt:     -bin-annot
+  Modules:       Mpris_client_common, Mpris_banshee, Mpris_mopidy, Mpris_spotify
+
+Executable demo_spotify
+  Path:          demo
+  MainIs:        demo_spotify.ml
+  Install:       false
+  BuildDepends:  obus, lwt, mpris.clients

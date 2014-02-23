@@ -1,0 +1,45 @@
+# OASIS_START
+# DO NOT EDIT (digest: a24dbd4f49538ce087ca159df1ebe054)
+# Ignore VCS directories, you can use the same kind of rule outside 
+# OASIS_START/STOP if you want to exclude directories that contains 
+# useless stuff for the build process
+<**/.svn>: -traverse
+<**/.svn>: not_hygienic
+".bzr": -traverse
+".bzr": not_hygienic
+".hg": -traverse
+".hg": not_hygienic
+".git": -traverse
+".git": not_hygienic
+"_darcs": -traverse
+"_darcs": not_hygienic
+# Library mpris
+"lib/mpris.cmxs": use_mpris
+<lib/mpris.{cma,cmxa}>: oasis_library_mpris_byte
+<lib/*.ml{,i}>: oasis_library_mpris_byte
+<lib/mpris.{cma,cmxa}>: oasis_library_mpris_native
+<lib/*.ml{,i}>: oasis_library_mpris_native
+<lib/*.ml{,i}>: pkg_obus
+<lib/*.ml{,i}>: pkg_lwt
+# Library mpris_clients
+"clients/mpris_clients.cmxs": use_mpris_clients
+<clients/mpris_clients.{cma,cmxa}>: oasis_library_mpris_clients_byte
+<clients/*.ml{,i}>: oasis_library_mpris_clients_byte
+<clients/mpris_clients.{cma,cmxa}>: oasis_library_mpris_clients_native
+<clients/*.ml{,i}>: oasis_library_mpris_clients_native
+<clients/*.ml{,i}>: use_mpris
+<clients/*.ml{,i}>: pkg_obus
+<clients/*.ml{,i}>: pkg_lwt
+# Executable demo_spotify
+"demo/demo_spotify.byte": use_mpris_clients
+"demo/demo_spotify.byte": use_mpris
+"demo/demo_spotify.byte": pkg_obus
+"demo/demo_spotify.byte": pkg_lwt
+<demo/*.ml{,i}>: use_mpris_clients
+<demo/*.ml{,i}>: use_mpris
+<demo/*.ml{,i}>: pkg_obus
+<demo/*.ml{,i}>: pkg_lwt
+# OASIS_STOP
+<clients/*.ml{,i}>: syntax_camlp4o, pkg_lwt.syntax
+<demo/*.ml{,i}>: syntax_camlp4o, pkg_lwt.syntax
+<lib/*.ml{,i}>: syntax_camlp4o, pkg_lwt.syntax
