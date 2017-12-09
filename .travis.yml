@@ -7,8 +7,6 @@ env:
   global:
     - PACKAGE=mpris
   matrix:
-    - OCAML_VERSION=4.00
-    - OCAML_VERSION=4.01
     - OCAML_VERSION=4.02
     - OCAML_VERSION=4.03
     - OCAML_VERSION=4.04
