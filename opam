@@ -8,8 +8,10 @@ remove: [
   [make "PREFIX=%{prefix}%" "uninstall"]
 ]
 depends: [
-  "obus"
+  "oasis" {build}
   "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "obus"
 ]
 dev-repo: "git://github.com/johnelse/ocaml-mpris"
 available: ocaml-version >= "4.00.1"
