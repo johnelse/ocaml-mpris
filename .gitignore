@@ -1,8 +1,4 @@
 *.swp
-
 _build/
-
-demo_spotify.byte
-
-setup.data
-setup.log
+*.install
+*.merlin

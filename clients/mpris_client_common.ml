@@ -1,5 +1,5 @@
 let make_proxy bus_name =
-  lwt bus = OBus_bus.session () in
+  let%lwt bus = OBus_bus.session () in
   Lwt.return (OBus_proxy.make
-    (OBus_peer.make bus bus_name)
-    ["org"; "mpris"; "MediaPlayer2"])
+    ~peer:(OBus_peer.make ~connection:bus ~name:bus_name)
+    ~path:["org"; "mpris"; "MediaPlayer2"])

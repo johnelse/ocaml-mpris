@@ -134,14 +134,16 @@ struct
   let get_playlists proxy ~index ~max_count ~order ~reverse_order =
     let index = Int32.of_int index in
     let max_count = Int32.of_int max_count in
-    lwt (context, ret) = OBus_method.call_with_context m_GetPlaylists proxy (index, max_count, order, reverse_order) in
-    let ret = List.map (fun (x1, x2, x3) -> (OBus_proxy.make (OBus_context.sender context) x1, x2, x3)) ret in
+    let%lwt (context, ret) = OBus_method.call_with_context m_GetPlaylists proxy (index, max_count, order, reverse_order) in
+    let ret = List.map (fun (x1, x2, x3) ->
+      (OBus_proxy.make ~peer:(OBus_context.sender context) ~path:x1, x2, x3)) ret in
     return ret
 
   let playlist_changed proxy =
     OBus_signal.map_with_context
       (fun context playlist ->
-         let playlist = (fun (x1, x2, x3) -> (OBus_proxy.make (OBus_context.sender context) x1, x2, x3)) playlist in
+         let playlist = (fun (x1, x2, x3) ->
+           (OBus_proxy.make ~peer:(OBus_context.sender context) ~path:x1, x2, x3)) playlist in
          playlist)
       (OBus_signal.make s_PlaylistChanged proxy)
 
@@ -155,6 +157,7 @@ struct
 
   let active_playlist proxy =
     OBus_property.map_r_with_context
-      (fun context x -> (fun (x1, x2) -> (x1, (fun (x1, x2, x3) -> (OBus_proxy.make (OBus_context.sender context) x1, x2, x3)) x2)) x)
+      (fun context x -> (fun (x1, x2) -> (x1, (fun (x1, x2, x3) ->
+        (OBus_proxy.make ~peer:(OBus_context.sender context) ~path:x1, x2, x3)) x2)) x)
       (OBus_property.make p_ActivePlaylist proxy)
 end

@@ -1,29 +1,24 @@
-all: build
+all:
+	dune build @install
 
-.PHONY: install uninstall clean
-
-NAME=mpris
-J=4
-
-setup.ml: _oasis
-	oasis setup
-
-setup.data: setup.ml
-	ocaml setup.ml -configure
-
-build: setup.data setup.ml
-	ocaml setup.ml -build -j $(J)
-
-install: setup.data setup.ml
-	ocaml setup.ml -install
-
-uninstall:
-	ocamlfind remove $(NAME)
-
-reinstall: setup.ml
-	ocamlfind remove $(NAME) || true
-	ocaml setup.ml -reinstall
+doc:
+	dune build @doc
 
 clean:
-	ocamlbuild -clean
-	rm -f setup.data setup.log
+	dune clean
+
+test:
+	dune runtest --force
+
+install:
+	dune install
+
+uninstall:
+	dune uninstall
+
+ARGS=
+
+demo_spotify:
+	dune exec demo/$@.exe -- $(ARGS)
+
+.PHONY: demo_spotify test
