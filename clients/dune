@@ -1,0 +1,6 @@
+(library
+  (name mpris_clients)
+  (libraries lwt obus mpris lwt_ppx)
+  (modules mpris_client_common mpris_banshee mpris_mopidy mpris_spotify)
+  (wrapped false)
+  (preprocess (pps lwt_ppx)))

@@ -27,4 +27,3 @@ end
 
 module Org_mpris_MediaPlayer2_Player =
   Mpris_client_generic.Org_mpris_MediaPlayer2_Player
-
