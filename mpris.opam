@@ -8,10 +8,11 @@ depends: [
   "dune" {build}
   "lwt_ppx" {build}
   "obus"
+  "odoc" {doc}
 ]
 build: [
   ["dune" "build" "@install" "-p" name]
-  [with-doc "dune" "build" "@doc" "-p" name]
-  [with-test "dune" "runtest" "-p" name]
+  ["dune" "build" "@doc" "-p" name] {with-doc}
+  ["dune" "runtest" "-p" name] {with-test}
 ]
 dev-repo: "git://github.com/johnelse/ocaml-mpris"
