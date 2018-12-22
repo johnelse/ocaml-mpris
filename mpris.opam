@@ -1,10 +1,11 @@
 opam-version: "2.0"
 synopsis: "Client library for the MPRIS D-Bus media player interface"
 maintainer: "john.else@gmail.com"
-authors: "John Else"
+authors: ["John Else"]
 homepage: "https://github.com/johnelse/ocaml-mpris"
 bug-reports: "https://github.com/johnelse/ocaml-mpris/issues"
 depends: [
+  "ocaml" {>= "4.03.0"}
   "dune" {build}
   "lwt_ppx" {build}
   "obus"
