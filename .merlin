@@ -1,8 +1,0 @@
-PKG lwt lwt.syntax obus
-S lib
-S clients
-S demo
-
-B _build/lib
-B _build/clients
-B _build/demo
