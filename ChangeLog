@@ -1,5 +1,6 @@
-0.1.2 (23-Dec-2018):
+0.2.0 (23-Dec-2018):
  * Convert build to dune
+ * Rename sublibrary mpris.clients to mpris-clients
 
 0.1.1 (10-Dec-2017):
  * Add opam file
